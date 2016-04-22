@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="pragama" content="no-cache"><!--开发期间使用,之后删除 wanglinzhizhi -->
+  <meta content="target-densitydpi=device-dpi,width=640, user-scalable=no" name="viewport" id="viewport">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <link rel="stylesheet" href="./css/normalize.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="./css/main.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="./css/jquery.fullPage.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="./css/animate.css" media="screen" title="no title" charset="utf-8">
+  <title>yiche fork</title>
+
+
+
+  <script type="text/javascript">
+  // 目的 对各种屏幕的缩放适配
+
+  //正则,匹配机型
+  var isAndroid = /android/i.test(navigator.userAgent.toLowerCase());
+  var isWx = /micromessenger/i.test(navigator.userAgent.toLowerCase());
+
+  (function(){
+    var phoneWidth =  parseInt(window.screen.width);
+    console.log(phoneWidth);
+    var phoneScale = phoneWidth/640;
+    var ua = navigator.userAgent;
+    var dpi =  640/phoneWidth*window.devicePixelRatio*160;
+
+
+    //wanglinzhizhi 对安卓的额外处理,因为安卓dpi不是整数
+
+    if (/Android.*?(\d+\.\d+)/.test(ua)){
+
+      console.log("Anroid"+dpi);
+      var version = parseFloat(RegExp.$1);
+      if(version<=2.3){
+        document.getElementById('viewport').content = 'width=640,target-densitydpi='+dpi;
+      } else {
+        document.getElementById('viewport').content = 'width=640,user-scalable=no,target-densitydpi='+dpi;
+      }
+    }else {
+
+      console.log("apple "+dpi);
+    }
+  })();
+
+
+
+  </script>
+
+
+
+
+  <script src="./js/jquery.min.js"></script>
+  <script type="text/javascript">
+    var bitautoskweburl = "http://www.bitauto.com/zhuanti/adtopic/webapisk/JsConfig20150504/JsCommon20150504/";
+    document.write('<scri' + 'pt src=' + bitautoskweburl + 'config.js type="text/javascript"></s' + 'cript>');
+    document.write('<scri' + 'pt src=' + bitautoskweburl + 'skcommon.js type="text/javascript"></s' + 'cript>');
+  </script>
+  <script type="text/javascript" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+  <script src="common/base_market.js" type="text/javascript"></script>
+  <script src="common/dealer.js" type="text/javascript"></script>
+  <script type="text/javascript" src="./js/jquery.fullPage.min.js"></script>
+  <script type="text/javascript" src="./js/examples.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#fullpage').fullpage({
+            css3: true
+          });
+    });
+
+
+    $.fn.extend({
+        animateCss: function (animationName) {
+            var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+            $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+                $(this).removeClass('animated ' + animationName);
+            });
+        }
+    });
+
+
+
+    //灯延迟加载
+    (function(){
+      setTimeout(function(){
+          $('.ddd').animateCss('flash');
+      },1000);
+    })();
+
+    (function(){
+      setTimeout(function(){
+        $('.bigPic1').show().animateCss('fadeOutLeft');
+        $('.bigPic1').addClass("hhidenTemp");
+      },2000);
+      //
+      // $('.bigPic1').hide();
+      //
+      // setTimeout(function(){
+        $('.bigPic2').removeClass();
+      //   $('.bigPic2').animateCss('fadeOutLeft');
+      // },2000);
+      //
+      // $('.bigPic2').hide();
+      //
+      // setTimeout(function(){
+      //   $('.bigPic3').show().animateCss('fadeOutLeft');
+      // },2000);
+      //   $('.bigPic3').hide();
+    })();
+
+
+
+
+
+
+
+  </script>
+
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+$.fn.fullpage({
+
+  slidesColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90', '#ef820'],
+
+  anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+
+  afterLoad: function(anchorLink, index){
+
+    if(index == 2){
+
+      $('.section2').find('p').delay(500).animate({
+
+        left: '0'
+
+      }, 1500, 'easeOutExpo');
+
+    }
+
+    if(index == 3){
+
+      $('.section3').find('p').delay(500).animate({
+
+        bottom: '0'
+
+      }, 1500, 'easeOutExpo');
+
+    }
+
+    if(index == 4){
+
+      $('.section4').find('p').fadeIn(2000);
+
+    }
+
+  },
+
+  onLeave: function(index, direction){
+
+    if(index == '2'){
+
+      $('.section2').find('p').delay(500).animate({
+
+        left: '-120%'
+
+      }, 1500, 'easeOutExpo');
+
+    }
+
+    if(index == '3'){
+
+      $('.section3').find('p').delay(500).animate({
+
+        bottom: '-120%'
+
+      }, 1500, 'easeOutExpo');
+
+    }
+
+    if(index == '4'){
+
+      $('.section4').find('p').fadeOut(2000);
+
+    }
+
+  }
+
+});
+
+});
+
+
+  </script>
+
+
+
+
+</head>
+
+<body>
+  <div id="fullpage">
+    <!-- section 1 -->
+
+      <div class="section1Content section" id="section1">
+        <!-- 左边~~  -->
+        <div class="headerImg bounceInLeft animated">
+          <img src="./img/h.png" alt="" />
+        </div>
+
+        <!-- 灯灯登登，闪~~~ -->
+        <div class="ddd">
+          <img src="./img/dd.png" alt="" />
+        </div>
+
+        <!-- downBtn -->
+        <div class="downBtn"></div>
+      </div>
+
+
+      <!-- section 1 end -->
+
+      <!-- section 2 -->
+
+        <div class="section2Content Contentbackground section" id="section2">
+          <!-- header -->
+          <header>
+            <div class="sectionH">
+              <img src="./img/s2h.png" alt="" />
+            </div>
+          </header>
+
+          <div class="bigPic bigPic1">
+              <img src="./img/pic1.png" alt="" />
+          </div>
+
+          <div class="bigPic bigPic2">
+              <img src="./img/pic2.png" alt="" />
+          </div>
+
+          <div class="bigPic bigPic3">
+              <img src="./img/pic3.png" alt="" />
+          </div>
+
+          <!-- content1-->
+          <div class="content item1">
+            <img src="./img/item1.png" alt="" />
+          </div>
+
+          <!-- content2 -->
+          <div class="content item2">
+            <img src="./img/item2.png" alt="" />
+          </div>
+
+          <!-- content3 -->
+          <div class="content item3">
+            <img src="./img/item3.png" alt="" />
+          </div>
+
+          <!-- downBtn -->
+          <div class="downBtn"></div>
+        </div>
+
+      <!-- section 2 end-->
+
+      <!-- section 3 -->
+        <div class="section3Content Contentbackground section" id="section3">
+          <!--header  -->
+          <header>
+            <div class="sectionH">
+              <img src="./img/s3h.png" alt="" />
+            </div>
+          </header>
+
+          <!-- 这里是个轮播图 -->
+          <div class="mainContainer">
+
+
+
+
+
+            <div class="picContent borderFrame focus" id="focus">
+
+
+
+              <div class="picCC">
+
+                <div class="cardwordItem">
+                  <div class="cardItem">
+                    <img src="./img/s3p1.png" alt="" />
+                  </div>
+
+                  <div class="wordItem">
+                    <img src="./img/s3w1.png" alt="" />
+                  </div>
+                </div>
+
+
+                <div class="cardwordItem">
+
+                  <div class="cardItem">
+                    <img src="./img/s3p2.png" alt="" />
+                  </div>
+
+                  <div class="wordItem">
+                    <img src="./img/s3w2.png" alt="" />
+                  </div>
+
+                </div>
+
+
+                <!-- hiddenTemp 这个是暂时用来隐藏的,在做轮播的时候去掉 -->
+
+                <div class="cardwordItem">
+                  <div class="cardItem">
+                    <img src="./img/s3p3.png" alt="" />
+                  </div>
+
+                  <div class="wordItem">
+                    <img src="./img/s3w3.png" alt="" />
+                  </div>
+                </div>
+
+                <div class="cardwordItem">
+                  <div class="cardItem">
+                    <img src="./img/s3p4.png" alt="" />
+                  </div>
+
+                  <div class="wordItem">
+                    <img src="./img/s3w4.png" alt="" />
+                  </div>
+                </div>
+
+                <div class="cardwordItem">
+                  <div class="cardItem">
+                    <img src="./img/s3p5.png" alt="" />
+                  </div>
+
+                  <div class="wordItem">
+                    <img src="./img/s3w5.png" alt="" />
+                  </div>
+                </div>
+
+
+                <div class="cardwordItem">
+                  <div class="cardItem">
+                    <img src="./img/s3p6.png" alt="" />
+                  </div>
+
+                  <div class="wordItem">
+                    <img src="./img/s3w6.png" alt="" />
+                  </div>
+                </div>
+
+                <div class="cardwordItem">
+                  <div class="cardItem">
+                    <img src="./img/s3p7.png" alt="" />
+                  </div>
+                  <div class="wordItem">
+                    <img src="./img/s3w7.png" alt="" />
+                  </div>
+                </div>
+
+                <div class="cardwordItem">
+                  <div class="cardItem">
+                    <img src="./img/s3p8.png" alt="" />
+                  </div>
+
+                  <div class="wordItem">
+                    <img src="./img/s3w8.png" alt="" />
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+            <div class="wordContent hhidenTemp">
+
+              <div class="wordXXX">
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- downBtn -->
+          <div class="downBtn"></div>
+
+        </div>
+      <!-- section 3 end -->
+
+
+
+
+
+      <!-- section5 -->
+      <!-- log0421
+        section5 的位置有变更.section的顺序是按照最初版本的
+
+        by wanglinzhizhi
+     -->
+
+        <div class="section5Content Contentbackground section" id="section5">
+          <!--header  -->
+          <header>
+            <div class="sectionH">
+              <img src="./img/s5h.png" alt="" />
+            </div>
+          </header>
+
+          <div class="mainContainer mainS5">
+            <!--  main header-->
+            <div class="mainS5Header">
+              <img src="./img/s5mh.png" alt="" />
+            </div>
+
+            <!--  main body -->
+            <div class="mainS5Body">
+              <!-- 手动挡 -->
+               <div class="manualCar hhidenTemp">
+                <div class="manualCartit">
+                  手动挡车型
+                </div>
+
+                <div class="carcarcar">
+
+                  <div class="cari">
+                    <p class="p1">全系享受购置税减半政策</p>
+                    <p class="p2"><span>6000</span>元</p>
+                    <p class="p3">最高惠省</p>
+                  </div>
+
+                  <div class="cari">
+                    <p class="p1">到店下定金1000元可立抵</p>
+                    <p class="p2"><span>5000</span>元</p>
+                    <p class="p3">新车商业险</p>
+                  </div>
+
+                  <div class="cari">
+                    <p class="p1">交车再送</p>
+                    <p class="p2"><span>5000</span>元</p>
+                    <p class="p3">超值大礼包</p>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- 自动档-->
+              <div class="autoCar hhidenTemp">
+                  <div class="manualCartit">
+                    自动挡车型
+                  </div>
+
+                  <div class="carcarcar">
+
+                    <div class="cari">
+                      <p class="p1">全系享受购置税</p>
+                      <p>减半政策</p>
+                      <p class="p2"><span>6000</span>元</p>
+                      <p class="p3">最高惠省约</p>
+                    </div>
+
+                    <div class="cari">
+                      <p class="p1">到店下定金2000元可立抵</p>
+                      <p class="p2"><span>5000</span>元</p>
+                      <p class="p3">新车商业险</p>
+                    </div>
+
+                    <div class="cari">
+                      <p class="p1">交车再送</p>
+                      <p class="p2"><span>5000</span>元</p>
+                      <p class="p3">超值大礼包</p>
+                    </div>
+
+                  </div>
+
+
+              </div>
+
+              <div class="mainS5Content">
+                <img src="./img/s5m1.png" alt="" />
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+
+          <!-- downBtn -->
+          <div class="downBtn"></div>
+
+        </div>
+
+
+      <!-- log0421
+        section5 的位置有变更.section的顺序是按照最初版本的
+
+        by wanglinzhizhi
+     -->
+      <!--section5 end  -->
+
+      <!-- section 4 -->
+
+        <div class="section4Content Contentbackground section" id="section4">
+          <!--header  -->
+          <header>
+            <div class="sectionH">
+              <img src="./img/s4h.png" alt="" />
+            </div>
+          </header>
+
+          <div class="mainContainer mainS4">
+            <div class="mainHeader">
+
+                <p>预约试驾,即有机会获得参与礼:<span>100元京东卡</span></p>
+                <p>购车回传发票还可获得100元油卡的购车礼大奖</p>
+                <p>活动礼品,先到先得,详情请查看活动细则<p>
+
+            </div>
+            <div class="mainContent">
+              <form class="" action="javascript::void(0)" method="post" autocomplete="on">
+                <div class="infoBox">
+
+                  <div  class="infoItem infoItem1">
+                      <label for="name">您的姓名</label>
+                      <input type="text" id="LoginName" name="username" />
+                  </div>
+
+                  <div class="infoItem">
+                      <label for="cellphone">您的电话</label>
+                      <input type="tel"  id="LoginPhone" name="cellphone"/>
+                  </div>
+
+                  <div class="infoItem">
+                      <label for="provinces">所在省份</label>
+                      <select class="provinces" id="prov" name="provinces">
+                        <option value="-1">请选择</option>
+                      </select>
+                  </div>
+
+                  <div class="infoItem">
+                      <label for="city">所在城市</label>
+                      <select class="city" id="city" name="city">
+                        <option value="-1">请选择</option>
+
+                      </select>
+                  </div>
+
+                  <div class="infoItem">
+                      <label for="chooseSailer">选专营店</label>
+                      <select class="chooseSailer" id="dealer" name="sailer">
+                        <option value="-1">请选择</option>
+
+                      </select>
+                  </div>
+
+                  <div class="moreLink">
+                    <a href="javascript::void(0)">查看更多</a>
+                  </div>
+
+                  <div class="infoItem infoItemLast">
+                    <div class="button">
+                        <button type="button" id="denging">确认提交</button>
+                    </div>
+                </div>
+
+              </form>
+
+
+            </div>
+
+          </div>
+
+          <div class="limitTimeDiscount">
+            <a href="javascript::void(0)">开启限时特惠</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- section 4 end -->
+  </div>
+  </body>
+  <script type="text/javascript" src="./js/TouchSlide.js"></script>
+
+  <script type="text/javascript">
+    TouchSlide({
+        slideCell:"#focus",
+        mainCell:".picCC",
+        effect:"left",
+        autoPlay:true,//自动播放
+        switchLoad:"_src" //切换加载，真实图片路径为"_src"
+      });
+
+  </script>
+
+<script type="text/javascript" src="http://g.yccdn.com"></script>
+
+
+</html>
+
+
+<!--
+log0421 : 需要加一个section5 ,但是section5 的位置有变更.section的顺序是按照最初版本的
+by wanglinzhizhi
+ -->
